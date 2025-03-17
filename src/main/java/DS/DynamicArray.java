@@ -128,4 +128,39 @@ class DynamicArray{
     public boolean isEmpty(){
        return size == 0;
     }
+    
+    public static void main(String[] args) {
+        /*
+        Testing the methods shown above
+        */
+        DynamicArray arr = new DynamicArray(5);//Initial capacity of 5
+
+        // Test add() method
+        arr.add(10);
+        arr.add(20);
+        arr.add(30);
+        arr.add(40);
+        arr.add(50);
+        arr.add(60);//Should trigger resize due it going past capacity
+
+        System.out.println("Array length: " + arr.length());//Expecting 6
+        System.out.println("Contains 30? " + arr.contains(30));//Expecting true
+
+        // Test remove() method
+        arr.remove(30);
+        System.out.println("Contains 30 after removal? " + arr.contains(30));//Expecting false
+
+        //Test insertAt() method
+        arr.insertAt(2, 25);
+        System.out.println("Inserted 25 at index 2, new value: " + arr.getIndex(25));
+        //Should return 2
+
+        //Test getMax() and getMin()
+        System.out.println("Max: " + arr.getMax());//Should return the highest number
+        System.out.println("Min: " + arr.getMin());//Should return the lowest number
+
+        //Test clear() method
+        arr.clear();
+        System.out.println("Array is empty after clear? " + arr.isEmpty());//Expecting true
+    }
 }
